@@ -1,0 +1,131 @@
+[global]
+  github_token = ""
+  upgrade_only = true
+  target = "~/.local/bin"
+
+["eza-community/eza"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "gnu.tar.gz" ]
+  target = "~/.local/bin/eza"
+
+["sharkdp/fd"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "gnu.tar.gz" ]
+  target = "~/.local/bin/fd"
+
+["sharkdp/bat"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "gnu.tar.gz" ]
+  target = "~/.local/bin/bat"
+
+["direnv/direnv"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "linux-amd64" ]
+  target = "~/.local/bin/direnv"
+
+["cilium/cilium-cli"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "linux-amd64.tar.gz" ]
+  target = "~/.local/bin/cilium"
+
+["starship/starship"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "x86_64-unknown-linux-gnu.tar.gz" ]
+  target = "~/.local/bin/starship"
+
+["junegunn/fzf"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "linux_amd64.tar.gz" ]
+  target = "~/.local/bin/fzf"
+
+["hairyhenderson/gomplate"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = [ "linux-amd64" ]
+  target = "~/.local/bin/gomplate"
+
+["aaronriekenberg/rust-parallel"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = ["linux-gnu.tar.gz"]
+  target = "~/.local/bin/rust-parallel"
+
+["ajeetdsouza/zoxide"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = ["x86_64-unknown-linux-musl.tar.gz"]
+  target = "~/.local/bin/zoxide"
+
+["jesseduffield/lazygit"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = ["linux_x86_64.tar.gz"]
+  target = "~/.local/bin/lazygit"
+
+["mitsuhiko/minijinja"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = ["unknown-linux-gnu", "minijinja-cli", "^LICENSE"]
+  target = "~/.local/bin"
+  all = true
+
+["google/yamlfmt"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = ["x86_64", "Linux"]
+  target = "~/.local/bin/yamlfmt"
+
+["stackrox/kube-linter"]
+  upgrade_only = true
+  show_hash = true
+  asset_filters = ["kube-linter-linux.tar.gz"]
+  target = "~/.local/bin/kube-linter"
+
+["astral-sh/uv"]
+  upgrade_only = false
+  show_hash = true
+  system = "linux/amd64"
+  asset_filters = ["gnu"]
+  target = "~/.local/bin"
+
+["vmware/govmomi"]
+  upgrade_only = false
+  show_hash = true
+  system = "linux/amd64"
+  asset_filters = ["govc"]
+  target = "~/.local/bin"
+
+["mikefarah/yq"]
+  upgrade_only = false
+  show_hash = true
+  system = "linux/amd64"
+  asset_filters = ["yq", "^.tar.gz"]
+  target = "~/.local/bin"
+
+["jqlang/jq"]
+  upgrade_only = false
+  show_hash = true
+  system = "linux/amd64"
+  asset_filters = ["jq", "linux-amd64"]
+  target = "~/.local/bin"
+
+["ducaale/xh"]
+  upgrade_only = false
+  show_hash = true
+  system = "linux/amd64"
+  asset_filters = ["musl.tar.gz"]
+  target = "~/.local/bin"
+
+["kubernetes-sigs/kind"]
+  upgrade_only = false
+  show_hash = true
+  system = "linux/amd64"
+  asset_filters = ["kind-linux-amd64"]
+  target = "~/.local/bin"

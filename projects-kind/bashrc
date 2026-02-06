@@ -1,0 +1,10 @@
+alias k=kubectl
+source <(k completion bash)
+complete -o default -F __start_kubectl k
+source <(kustomize completion bash)
+source <(kind completion bash)
+source <(k9s completion bash)
+source <(helm completion bash)
+source <(cilium completion bash)
+source <(yq shell-completion bash)
+source <(gwctl completion bash)
