@@ -1,0 +1,58 @@
+---
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  disableDefaultCNI: true # disable kindnet
+  podSubnet: 192.168.0.0/16 # set to Calico's default subnet
+featureGates:
+  "NFTablesProxyMode": true
+  "InPlacePodVerticalScaling": true
+  "ValidatingAdmissionPolicy": true
+runtimeConfig:
+  "admissionregistration.k8s.io/v1beta1": "true"
+nodes:
+- role: control-plane
+  image: $DH_NAMESPACE/node:$KINDEST_NODE_VER
+  kubeadmConfigPatches:
+  - |
+    kind: KubeProxyConfiguration
+    mode: "nftables"
+    nftables:
+      masqueradeAll: false
+      masqueradeBit: 14
+      minSyncPeriod: 1s
+      syncPeriod: 30s
+- role: worker
+  image: $DH_NAMESPACE/node:$KINDEST_NODE_VER
+  kubeadmConfigPatches:
+  - |
+    kind: KubeProxyConfiguration
+    mode: "nftables"
+    nftables:
+      masqueradeAll: false
+      masqueradeBit: 14
+      minSyncPeriod: 1s
+      syncPeriod: 30s
+- role: worker
+  image: $DH_NAMESPACE/node:$KINDEST_NODE_VER
+  kubeadmConfigPatches:
+  - |
+    kind: KubeProxyConfiguration
+    mode: "nftables"
+    nftables:
+      masqueradeAll: false
+      masqueradeBit: 14
+      minSyncPeriod: 1s
+      syncPeriod: 30s
+containerdConfigPatches:
+  - |-
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+      endpoint = ["http://magic:5000"]
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]
+      endpoint = ["http://magic:5001"]
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."quay.io"]
+      endpoint = ["http://magic:5002"]
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."ghcr.io"]
+      endpoint = ["http://magic:5003"]
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."magic.gs.lab"]
+      endpoint = ["http://magic:6000"]
