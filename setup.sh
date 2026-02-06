@@ -9,10 +9,12 @@ mkdir -p ~/Projects/kind
 cp ./eget.toml ~/.config
 ./eget.sh
 
+source ~/.profile
+
 eget -D
 eget -r ~/.local/bin/LICENSE
 
-tar -C ./projeccts-kind -cvf - . | tar -C ~/Projects/kind -xvf -
+tar -C ./projects-kind -cvf - . | tar -C ~/Projects/kind -xvf -
 
 tar -C ./local-bin -cvf - . | tar -C ~/.local/bin -xvf -
 
