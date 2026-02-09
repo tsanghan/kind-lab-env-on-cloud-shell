@@ -36,3 +36,5 @@ cat ./projects-kind/bashrc >> ~/.bashrc
 source ./version.rc
 
 envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*}).yaml
+
+docker-network-kind.sh
