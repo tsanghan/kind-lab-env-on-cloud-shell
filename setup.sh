@@ -22,6 +22,10 @@ ln -s ~/.local/bin/kubectl ~/.local/bin/k
 
 sudo apt install nfs-kernel-server -y
 
+echo "/srv 10.254.254.0/24(rw,async,no_subtree_check,no_root_squash)" | sudo tee /etc/exports
+
+sudo exportfs -a
+
 cat ./version.rc >> ~/.bashrc
 
 source ./version.rc
@@ -30,4 +34,4 @@ echo "DH_NAMESPACE=$DH_NAMESPACE"
 
 echo "KINDEST_NODE_VER=$KINDEST_NODE_VER"
 
-envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*})
+envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*}).yaml
