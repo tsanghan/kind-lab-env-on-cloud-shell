@@ -13,6 +13,8 @@ cp ./eget.toml ~/.config
 
 source ~/.profile
 
+echo "export PATH=$HOME/.local/bin:$HOME" >> ~/.bashrc
+
 eget -D
 
 tar -C ./projects-kind --exclude="kind.yaml" -cvf - . | tar -C ~/Projects/kind -xvf -
