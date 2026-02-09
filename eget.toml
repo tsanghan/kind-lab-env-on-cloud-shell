@@ -2,7 +2,6 @@
   github_token = ""
   system = "linux/amd64"
   asset_filters = ["kind-linux-amd64"]
-  target = "~/.local/bin"
   upgrade_only = true
   show_hash = true
   target = "~/.local/bin"
