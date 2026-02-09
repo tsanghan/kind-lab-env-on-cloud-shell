@@ -31,7 +31,7 @@ sudo exportfs -a
 
 cat ./version.rc >> ~/.bashrc
 
-cat ./projects/kind/bashrc >> ~/.bashrc
+cat ./projects-kind/bashrc >> ~/.bashrc
 
 source ./version.rc
 
