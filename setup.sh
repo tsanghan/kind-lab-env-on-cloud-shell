@@ -26,4 +26,8 @@ cat ./version.rc >> ~/.bashrc
 
 source ~/.bashrc
 
+echo "DH_NAMESPACE=$DH_NAMESPACE"
+
+echo "KINDEST_NODE_VER:$KINDEST_NODE_VER"
+
 envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*})

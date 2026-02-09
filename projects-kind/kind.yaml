@@ -4,12 +4,6 @@ apiVersion: kind.x-k8s.io/v1alpha4
 networking:
   disableDefaultCNI: true # disable kindnet
   podSubnet: 192.168.0.0/16 # set to Calico's default subnet
-featureGates:
-  "NFTablesProxyMode": true
-  "InPlacePodVerticalScaling": true
-  "ValidatingAdmissionPolicy": true
-runtimeConfig:
-  "admissionregistration.k8s.io/v1beta1": "true"
 nodes:
 - role: control-plane
   image: $DH_NAMESPACE/node:$KINDEST_NODE_VER
