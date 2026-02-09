@@ -8,3 +8,6 @@ source <(helm completion bash)
 source <(cilium completion bash)
 source <(yq shell-completion bash)
 source <(gwctl completion bash)
+eval "$(direnv hook bash)"
+eval "$(starship init bash)"
+eval "$(fzf --bash)"

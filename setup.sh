@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+mkdir -p ~/.kube
 mkdir -p ~/.config
 mkdir -p ~/.local/bin
 mkdir -p ~/Projects/kind
@@ -18,6 +19,8 @@ tar -C ./projects-kind --exclude="kind.yaml" -cvf - . | tar -C ~/Projects/kind -
 
 tar -C ./local-bin -cvf - . | tar -C ~/.local/bin -xvf -
 
+tar -C ./dot-kube -cvf - . | tar -c ~/.kube -xvf -
+
 ln -s ~/.local/bin/kubectl ~/.local/bin/k
 
 sudo apt install nfs-kernel-server -y
@@ -28,10 +31,8 @@ sudo exportfs -a
 
 cat ./version.rc >> ~/.bashrc
 
+cat ./projects/kind/bashrc >> ~/.bashrc
+
 source ./version.rc
-
-echo "DH_NAMESPACE=$DH_NAMESPACE"
-
-echo "KINDEST_NODE_VER=$KINDEST_NODE_VER"
 
 envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*}).yaml
