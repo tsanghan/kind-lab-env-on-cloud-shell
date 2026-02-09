@@ -13,7 +13,7 @@ cp ./eget.toml ~/.config
 
 source ~/.profile
 
-echo "export PATH=$HOME/.local/bin:$HOME" >> ~/.bashrc
+echo "export PATH=$HOME/.local/bin:$PATH" >> ~/.bashrc
 
 eget -D
 
