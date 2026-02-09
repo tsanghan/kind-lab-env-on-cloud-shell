@@ -19,7 +19,7 @@ tar -C ./projects-kind --exclude="kind.yaml" -cvf - . | tar -C ~/Projects/kind -
 
 tar -C ./local-bin -cvf - . | tar -C ~/.local/bin -xvf -
 
-tar -C ./dot-kube -cvf - . | tar -c ~/.kube -xvf -
+tar -C ./dot-kube -cvf - . | tar -C ~/.kube -xvf -
 
 ln -s ~/.local/bin/kubectl ~/.local/bin/k
 
