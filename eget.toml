@@ -1,5 +1,8 @@
 [global]
   github_token = ""
+  system = "linux/amd64"
+  asset_filters = ["kind-linux-amd64"]
+  target = "~/.local/bin"
   upgrade_only = true
   show_hash = true
   target = "~/.local/bin"
@@ -49,9 +52,9 @@
   target = "~/.local/bin/lazygit"
 
 ["mitsuhiko/minijinja"]
-  asset_filters = ["unknown-linux-gnu", "minijinja-cli", "^LICENSE"]
+  asset_filters = ["gnu"]
   target = "~/.local/bin"
-  all = true
+  file = "minijinja-cli"
 
 ["google/yamlfmt"]
   asset_filters = ["x86_64", "Linux"]
@@ -62,31 +65,29 @@
   target = "~/.local/bin/kube-linter"
 
 ["astral-sh/uv"]
-  system = "linux/amd64"
   asset_filters = ["gnu"]
   target = "~/.local/bin"
 
-["vmware/govmomi"]
-  system = "linux/amd64"
-  asset_filters = ["govc"]
-  target = "~/.local/bin"
-
 ["mikefarah/yq"]
-  system = "linux/amd64"
   asset_filters = ["yq", "^.tar.gz"]
   target = "~/.local/bin"
 
 ["jqlang/jq"]
-  system = "linux/amd64"
   asset_filters = ["jq", "linux-amd64"]
   target = "~/.local/bin"
 
 ["ducaale/xh"]
-  system = "linux/amd64"
   asset_filters = ["musl.tar.gz"]
   target = "~/.local/bin"
 
 ["kubernetes-sigs/kind"]
-  system = "linux/amd64"
   asset_filters = ["kind-linux-amd64"]
+  target = "~/.local/bin"
+
+["derailed/k9s"]
+  asset_filters = ["Linux", "^sbom.json"]
+  target = "~/.local/bin"
+
+["kubernetes-sigs/gwctl"]
+  asset_filters = ["Linux"]
   target = "~/.local/bin"
