@@ -14,7 +14,7 @@ source ~/.profile
 
 eget -D
 
-tar -C ./projects-kind -cvf - . | tar -C ~/Projects/kind -xvf -
+tar -C ./projects-kind --exclude="kind.yaml" -cvf - . | tar -C ~/Projects/kind -xvf -
 
 tar -C ./local-bin -cvf - . | tar -C ~/.local/bin -xvf -
 
@@ -24,3 +24,6 @@ sudo apt install nfs-kernel-server -y
 
 cat ./version.rc >> ~/.bashrc
 
+source ~/.bashrc
+
+envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*})
