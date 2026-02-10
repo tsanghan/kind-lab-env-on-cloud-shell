@@ -9,8 +9,9 @@ helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.0 -n envo
 
 While waiting for helm to complet EonvoyGateway deployment, you can click on the *cloudshell* tab where *k9s* is running to observer what Pod/Pods is/are deployed.
 
-Now, we deploy an application, this example is from [Install the GatewayClass, Gateway, HTTPRoute and example app](https://gateway.envoyproxy.io/docs/install/install-helm/)\
-Let us vire the manifest file first.
+We like to deploy an application from [Install the GatewayClass, Gateway, HTTPRoute and example app](https://gateway.envoyproxy.io/docs/install/install-helm/)
+
+Let us first explore the manifest file first.
 ```bash
 curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
 ```
