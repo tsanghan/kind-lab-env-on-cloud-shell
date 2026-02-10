@@ -1,4 +1,4 @@
-# How to install Ansible-Core with UV
+# Kind Lab environment in Google Cloud Shell
 
 A customised Google Cloudshell enviroment for you to practice Kubernetes with KIND
 
