@@ -23,3 +23,10 @@ The following command will install,\
 ```bash
 (cilium install && metallb.sh && metrics-server.sh && nfs-storage-class.sh) >/dev/null 2>&1 & k9s
 ```
+
+We now have a Kubernetes cluster up and running.
+
+We can now move on to tutorial 1
+```bash
+teachme ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
+```
