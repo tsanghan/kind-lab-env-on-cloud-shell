@@ -1,4 +1,5 @@
 alias k=kubectl
+alias e=exit
 source <(k completion bash)
 complete -o default -F __start_kubectl k
 source <(kustomize completion bash)

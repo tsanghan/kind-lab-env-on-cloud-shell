@@ -3,7 +3,7 @@
 The following commands deploy EnvoyGateway, a Gateway Controller with EnvoyGateway CRDs
 
 ```bash
-helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.0  --set crds.gatewayAPI.enabled=false --set crds.envoyGateway.enabled=true
+helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.0  --set crds.gatewayAPI.enabled=false --set crds.envoyGateway.enabled=true | k apply -f -
 helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.0 -n envoy-gateway-system --create-namespace --skip-crds
 ```
 
