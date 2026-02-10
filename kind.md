@@ -14,10 +14,10 @@ kind create cluster --config kind-v1.35.0.yaml
 
 Install *batteries* so our Kubernetes cluster is more interesting to play with.
 The following command will install,\
-*Cilium* as CNI\
-*Metallb* as load balancer implementation for Kubernetes that allows you to expose services externally\
-*Metrics Server* a lightweight tool that collects and provides real-time CPU and memory usage metrics from containers and nodes in a Kubernetes cluster\
-*NFS CSI Driver* a Dynamic Volume Provisioner using NFS as storage service\
+1. *Cilium* as CNI
+2. *Metallb* as load balancer implementation for Kubernetes that allows you to expose services externally
+3. *Metrics Server* a lightweight tool that collects and provides real-time CPU and memory usage metrics from containers and nodes in a Kubernetes cluster
+4. *NFS CSI Driver* a Dynamic Volume Provisioner using NFS as storage service
 ```bash
 (cilium install && metallb.sh && metrics-server.sh && nfs-storage-class.sh) >/dev/null 2>&1 & k9s
 ```
