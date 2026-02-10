@@ -38,7 +38,7 @@ cat ./projects-kind/bashrc >> ~/.bashrc
 source ./version.rc
 
 envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*}).yaml
-envsubst '$CERT_MANAGER_VER' < local-bin.cert-manager.sh > ~/.local/bin/cert-manager.sh
+envsubst '$CERT_MANAGER_VER' < ./local-bin/cert-manager.sh > ~/.local/bin/cert-manager.sh
 chmod +x ~/.local/bin/cert-manager.sh
 
 docker-network-kind.sh
