@@ -38,15 +38,17 @@ Check the status of *Gateway* resource
 k get gateway -A
 ```
 
-You will see some output similar to what is show below.\
+You will see some output similar to what is shown below.
 We only have 1 *Gateway* resource in *Default* namespace.
 ```none
 NAMESPACE   NAME   CLASS   ADDRESS          PROGRAMMED   AGE
 default     eg     eg      10.254.254.248   True         6m12s
 ```
 
-We have a *Gateway* resource with *eg* as the name of the resource.\
-This *eg* *Gateway* resource has been assigned an IP address of *10.254.254.248* and *PROGRAMMED=True*.\
+We have a *Gateway* resource with *eg* as the name of the resource.
+
+This *eg* *Gateway* resource has been assigned an IP address of *10.254.254.248* and *PROGRAMMED=True*.
+
 Please see [PROGRAMMED](https://gateway-api.sigs.k8s.io/geps/gep-1364/?h=programmed#programmed)
 
 To get the *port* number the *eg* *Gateway* is listeninig on.
@@ -54,7 +56,7 @@ To get the *port* number the *eg* *Gateway* is listeninig on.
 k get gateway eg -oyaml | yq '.spec.listeners'
 ```
 
-You will get a similar output show below
+You will get a similar output shown below
 ```none
 - allowedRoutes:
     namespaces:
@@ -71,17 +73,19 @@ Let us now check *Httproute* resource
 k get httproutes -A
 ```
 
-You will see some output similar to what is show below.\
+You will see some output similar to what is show below.
+
 We only have 1 *Httproute* resource in *Default* namespace.
 ```none
 NAMESPACE   NAME      HOSTNAMES             AGE
 default     backend   ["www.example.com"]   14m
 ```
 
-We have a *Httproute* resource with *backend* as the name of the resource.\
+We have a *Httproute* resource with *backend* as the name of the resource.
+
 The *backend* *Httproute* resource has been configured with a *HOSTNAME* of *www.example.com*
 
-We will now try to access the backend application.\
+We will now try to access the backend application.
 ```bash
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
