@@ -11,7 +11,7 @@ While waiting for helm to complet EonvoyGateway deployment, you can click on the
 
 We like to deploy an application from [Install the GatewayClass, Gateway, HTTPRoute and example app](https://gateway.envoyproxy.io/docs/install/install-helm/)
 
-Let us first explore the manifest file first.
+But let's first explore the manifest file first.
 ```bash
 curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
 ```
