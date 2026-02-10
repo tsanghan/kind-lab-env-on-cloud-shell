@@ -64,8 +64,8 @@ We will now try to access the backend application.\
 ```bash
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
-IP=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
-curl --resolv $DOMAIN:$PORT:$IP http://$DOMAIN
+IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
+curl --resolve $DOMAIN:$PORT:$IP http://$DOMAIN
 ```
 
 OR\
@@ -73,7 +73,7 @@ OR\
 ```bash
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
-IP=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
+IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
 xh --resolve $DOMAIN:$IP http://$DOMAIN
 ```
 
