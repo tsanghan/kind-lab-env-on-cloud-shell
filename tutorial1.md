@@ -18,11 +18,13 @@ If you do not have the Editor opened, click the *Open Editor* icon, first icon o
 
 In the *EXPLORER* panel, click *Projects*.
 
-The click *quickstart.yaml*, the manifest file we just downloaded.
+Then click *quickstart.yaml*, the manifest file we just downloaded.
 
 You should be familar with all the *Deployment* & *Service*, and propabliy *ServiceAccount* resources.
 
 Please explore be familar with *GatewayClass*, *Gateway* & *HTTPRoute* resources.
+
+For the specification of various *Gateway API* type, pelase refer to [Gateway API Reference](https://gateway-api.sigs.k8s.io/api-types/gateway/)
 
 We will now apply this *quickstart.yaml* manifest into *default* namespace.
 
