@@ -8,7 +8,7 @@ We have to setup Clound Shell with utilities and tools we need to create Kind Ku
 We will now create a Kind Kubernetes cluster
 ```bash
 source ~/.bashrc
-cd ~/Profile/kind
+cd ~/Projects/kind
 kind create cluster --config kind-v1.35.0.yaml
 cilium install
 cilium status --wait
