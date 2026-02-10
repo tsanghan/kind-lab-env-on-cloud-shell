@@ -19,7 +19,7 @@ eget -D
 
 tar -C ./projects-kind --exclude="kind.yaml" -cvf - . | tar -C ~/Projects/kind -xvf -
 
-tar -C ./local-bin -cvf - . | tar -C ~/.local/bin -xvf -
+tar -C ./local-bin --exclude="cert-manager.sh" -cvf - . | tar -C ~/.local/bin -xvf -
 
 tar -C ./dot-kube -cvf - . | tar -C ~/.kube -xvf -
 
@@ -38,5 +38,7 @@ cat ./projects-kind/bashrc >> ~/.bashrc
 source ./version.rc
 
 envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*}).yaml
+envsubst '$CERT_MANAGER_VER' < local-bin.cert-manager.sh > ~/.local/bin/cert-manager.sh
+chmod +x ~/.local/bin/cert-manager.sh
 
 docker-network-kind.sh
