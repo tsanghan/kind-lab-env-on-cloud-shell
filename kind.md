@@ -21,7 +21,7 @@ The following command will install,
 3. *Metrics Server* a lightweight tool that collects and provides real-time CPU and memory usage metrics from containers and nodes in a Kubernetes cluster
 4. *NFS CSI Driver* a Dynamic Volume Provisioner using NFS as storage service
 ```bash
-(cilium install --wait && metallb.sh && metrics-server.sh && nfs-storage-class.sh) >/dev/null 2>&1 & k9s -A
+(cilium install --wait && metallb.sh && metrics-server.sh && nfs-storage-class.sh && cert-manager.sh) >/dev/null 2>&1 & k9s -A
 ```
 Wait for the *STATUS* of all Pods to be *Running* before procedding.\
 We now have a Kubernetes cluster up and running.\
