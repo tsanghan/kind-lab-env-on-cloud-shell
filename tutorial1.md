@@ -14,12 +14,18 @@ Let us vire the manifest file first.
 ```bash
 curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
 ```
-If you do not have the Editor opened, click the *Open Editor* icon, first icon on the left on the top right corner.\
-In the *EXPLORER* panel, click *Projects*.\
-The click *quickstart.yaml*, the manifest file we just downloaded.\
-You should be familar with all the *Deployment* & *Service*, and propabliy *ServiceAccount* resources.\
-Please explore be familar with *GatewayClass*, *Gateway* & *HTTPRoute* resources.\
-We will now apply this *quickstart.yaml* manifest into *default* namespace.\
+If you do not have the Editor opened, click the *Open Editor* icon, first icon on the left on the top right corner.
+
+In the *EXPLORER* panel, click *Projects*.
+
+The click *quickstart.yaml*, the manifest file we just downloaded.
+
+You should be familar with all the *Deployment* & *Service*, and propabliy *ServiceAccount* resources.
+
+Please explore be familar with *GatewayClass*, *Gateway* & *HTTPRoute* resources.
+
+We will now apply this *quickstart.yaml* manifest into *default* namespace.
+
 ```bash
 k apply -f https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -n default
 ```
