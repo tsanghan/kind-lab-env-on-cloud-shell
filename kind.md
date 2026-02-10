@@ -7,11 +7,19 @@ We have to setup Clound Shell with utilities and tools we need to create Kind Ku
 ./setup.sh
 ```
 
-We will now create a Kind Kubernetes cluster with Gateway API definition applied
+We will now create a Kind Kubernetes cluster 
 ```bash
 source ~/.bashrc
 cd ~/Projects/kind
 kind create cluster --config kind-v1.35.0.yaml
+```
+
+Check that the kubectl version match with the kubernetes api version of *v1.35.0*
+```bash
+k version
+```
+We now apply Gateway API definition
+```bash
 k apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.1/standard-install.yaml
 ```
 
@@ -27,6 +35,10 @@ The following command will install,
 ```
 Wait for the *STATUS* of all Pods to be *Running* before procedding.\
 We now have a Kubernetes cluster up and running.\
+If you are interested, you may wan to view and read the various *shell scripts* above.\
+Click the *Open Editor* icon, first icon on the left on the top right corner.\
+Click *view* and click *Toggle Hidden Files*.\
+All *shell scripts* are in *~/.local/bin* directory.\
 Click on the *+* sign to start a 2nd *cloudshell* in a new tab.\
 We can now move on to tutorial 1 with the follown command.
 ```bash
