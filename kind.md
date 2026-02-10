@@ -38,7 +38,7 @@ We now have a Kubernetes cluster up and running.\
 If you are interested, you may wan to view and read the various *shell scripts* above.\
 Click the *Open Editor* icon, first icon on the left on the top right corner.\
 Click *view* and click *Toggle Hidden Files*.\
-All *shell scripts* are in *~/.local/bin* directory.\
+All *shell scripts* are in *~/.local/bin* directory, in the *EXPLORER* panel.\
 Click on the *+* sign to start a 2nd *cloudshell* in a new tab.\
 We can now move on to tutorial 1 with the follown command.
 ```bash

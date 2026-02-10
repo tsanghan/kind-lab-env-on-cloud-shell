@@ -7,7 +7,19 @@ helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.0  
 helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.0 -n envoy-gateway-system --create-namespace --skip-crds
 ```
 
-Now, we deploy an application, this example is from [Install the GatewayClass, Gateway, HTTPRoute and example app](https://gateway.envoyproxy.io/docs/install/install-helm/)
+While waiting for helm to complet EonvoyGateway deployment, you can click on the *cloudshell* tab where *k9s* is running to observer what Pod/Pods is/are deployed.
+
+Now, we deploy an application, this example is from [Install the GatewayClass, Gateway, HTTPRoute and example app](https://gateway.envoyproxy.io/docs/install/install-helm/)\
+Let us vire the manifest file first.
+```bash
+curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
+```
+If you do not have the Editor opened, click the *Open Editor* icon, first icon on the left on the top right corner.\
+In the *EXPLORER* panel, click *Projects*.\
+The click *quickstart.yaml*, the manifest file we just downloaded.\
+You should be familar with all the *Deployment* & *Service*, and propabliy *ServiceAccount* resources.\
+Please explore be familar with *GatewayClass*, *Gateway* & *HTTPRoute* resources.\
+We will now apply this *quickstart.yaml* manifest into *default* namespace.\
 ```bash
 k apply -f https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -n default
 ```
@@ -68,7 +80,7 @@ IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
 curl --resolve $DOMAIN:$PORT:$IP http://$DOMAIN
 ```
 
-OR\
+Or
 
 ```bash
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
