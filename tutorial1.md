@@ -7,11 +7,14 @@ helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.0  
 helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.0 -n envoy-gateway-system --create-namespace --skip-crds
 ```
 
-While waiting for helm to complet EonvoyGateway deployment, you can click on the *cloudshell* tab where *k9s* is running to observer what Pod/Pods is/are deployed.
+While waiting for *helm* to complete EonvoyGateway deployment, you can click on the *cloudshell* tab where *k9s* is running to observer what Pod/Pods is/are deployed.
 
 We like to deploy an application from [Install the GatewayClass, Gateway, HTTPRoute and example app](https://gateway.envoyproxy.io/docs/install/install-helm/)
 
-But let's first explore the manifest file first.
+But let's first explore the manifest file.
+
+Make sure you are on the *cloudshell* tab that has *command prompt*, i.e., not the *cloudshell* tab that *k9s* is running.
+
 ```bash
 curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
 ```
@@ -23,17 +26,23 @@ Then click *quickstart.yaml*, the manifest file we just downloaded.
 
 You should be familar with all the *Deployment* & *Service*, and propabliy *ServiceAccount* resources.
 
-Please explore be familar with *GatewayClass*, *Gateway* & *HTTPRoute* resources.
+Please explore and be familar with *GatewayClass*, *Gateway* & *HTTPRoute* resources.
 
-For the specification of various *Gateway API* type, pelase refer to [Gateway API Reference](https://gateway-api.sigs.k8s.io/api-types/gateway/)
+For the specifications of various *Gateway API* type, please refer to [Gateway API Reference](https://gateway-api.sigs.k8s.io/api-types/gateway/)
 
 We will now apply this *quickstart.yaml* manifest into *default* namespace.
+
+Please make sure your *command prompt* *cloudshell* tab has focus.
 
 ```bash
 k apply -f https://github.com/envoyproxy/gateway/releases/download/v1.7.0/quickstart.yaml -n default
 ```
+You may want to ckick on the *k9s* tab to see what is being deployed.
 
 Check the status of *Gateway* resource
+
+Make sure you are back on the *command prompt* tab.
+
 ```bash
 k get gateway -A
 ```
