@@ -8,6 +8,9 @@ mkdir -p ~/Projects/kind
 curl -SL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl
 chmod +x ~/.local/bin/kubectl
 
+curl -SL https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64 -o ~/.local/bin/minikube
+chmod +x ~/.local/bin/minikube
+
 cp ./eget.toml ~/.config
 ./eget.sh
 
