@@ -31,11 +31,11 @@ echo "/srv 10.254.254.0/24(rw,async,no_subtree_check,no_root_squash)" | sudo tee
 
 sudo exportfs -a
 
-cat ./version.rc >> ~/.bashrc
+cat ./versions.rc >> ~/.bashrc
 
 cat ./projects-kind/bashrc >> ~/.bashrc
 
-source ./version.rc
+source ./versions.rc
 
 envsubst '$DH_NAMESPACE:$KINDEST_NODE_VER' < projects-kind/kind.yaml | tee ~/Projects/kind/kind-$(echo ${KINDEST_NODE_VER%@sha*}).yaml
 envsubst '$CERT_MANAGER_VER' < ./local-bin/cert-manager.sh > ~/.local/bin/cert-manager.sh
