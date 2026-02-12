@@ -1,11 +1,41 @@
 #!/usr/bin/env bash
 
+MAX_RETRIES=5
+attempt=0
+URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+OUTPUT="~/.local/bin/kubectl"
+#curl -SL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl
+
 mkdir -p ~/.kube
 mkdir -p ~/.config
 mkdir -p ~/.local/bin
 mkdir -p ~/Projects/kind
 
-curl -SL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl
+while (( attempt < MAX_RETRIES )); do
+    ((attempt++))
+    echo "Attempt $attempt of $MAX_RETRIES..."
+
+    # -f: fail silently on HTTP errors
+    # -L: follow redirects
+    # -o: write output to file
+    curl -fL "$URL" -o "$OUTPUT"
+    status=$?
+
+    if [[ $status -eq 0 ]]; then
+        echo "Download succeeded."
+        break
+    else
+        echo "`\kubectl\` download failed (curl exit code $status)."
+        # optional: wait before retrying
+        sleep 2
+    fi
+done
+
+if [[ $status -ne 0 ]]; then
+    echo "Error: \`kubectl\` download failed after $MAX_RETRIES attempts."
+    exit 1
+fi
+
 chmod +x ~/.local/bin/kubectl
 
 curl -SL https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64 -o ~/.local/bin/minikube
