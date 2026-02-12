@@ -35,13 +35,13 @@ mkdir -p ~/.local/bin
 mkdir -p ~/Projects/kind
 
 URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-OUTPUT="~/.local/bin/kubectl"
+OUTPUT="$HOME/.local/bin/kubectl"
 download_file $URL $OUTPUT
 
 chmod +x ~/.local/bin/kubectl
 
 URL="https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
-OUTPUT="~/.local/bin/minikube"
+OUTPUT="$HOME/.local/bin/minikube"
 download_file $URL $OUTPUT
 
 chmod +x ~/.local/bin/minikube
