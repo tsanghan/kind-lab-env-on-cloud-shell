@@ -1,44 +1,49 @@
 #!/usr/bin/env bash
 
 MAX_RETRIES=5
-attempt=0
-URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-OUTPUT="~/.local/bin/kubectl"
-#curl -SL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl
+
+download_file() {
+    local url="$1"
+    local output="$2"
+    local max_retries="${3:-5}"
+    local attempt=0
+    local status=0
+
+    while (( attempt < max_retries )); do
+        ((attempt++))
+        echo "Attempt $attempt of $max_retries..."
+
+        curl -fL "$url" -o "$output"
+        status=$?
+
+        if (( status == 0 )); then
+            echo "Download succeeded."
+            return 0
+        else
+            echo "Download failed (curl exit code $status)."
+            sleep 2   # optional pause before next try
+        fi
+    done
+
+    echo "Error: file download failed after $max_retries attempts."
+    return 1
+}
 
 mkdir -p ~/.kube
 mkdir -p ~/.config
 mkdir -p ~/.local/bin
 mkdir -p ~/Projects/kind
 
-while (( attempt < MAX_RETRIES )); do
-    ((attempt++))
-    echo "Attempt $attempt of $MAX_RETRIES..."
-
-    # -f: fail silently on HTTP errors
-    # -L: follow redirects
-    # -o: write output to file
-    curl -fL "$URL" -o "$OUTPUT"
-    status=$?
-
-    if [[ $status -eq 0 ]]; then
-        echo "Download succeeded."
-        break
-    else
-        echo "`\kubectl\` download failed (curl exit code $status)."
-        # optional: wait before retrying
-        sleep 2
-    fi
-done
-
-if [[ $status -ne 0 ]]; then
-    echo "Error: \`kubectl\` download failed after $MAX_RETRIES attempts."
-    exit 1
-fi
+URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+OUTPUT="~/.local/bin/kubectl"
+donaload_file $URL $OUTPUT
 
 chmod +x ~/.local/bin/kubectl
 
-curl -SL https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64 -o ~/.local/bin/minikube
+URL="https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
+OUTPUT="~/.local/bin/minikube"
+donaload_file $URL $OUTPUT
+
 chmod +x ~/.local/bin/minikube
 
 cp ./eget.toml ~/.config
