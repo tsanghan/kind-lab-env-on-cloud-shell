@@ -171,7 +171,7 @@ EOF
 
 source ~/.bashrc
 
-eget -D
+"$HOME/.local/bin/eget" -D
 
 tar -C ./projects-kind --exclude="kind.yaml" -cvf - . | tar -C ~/Projects/kind -xvf -
 
