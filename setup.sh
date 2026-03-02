@@ -142,7 +142,7 @@ download_file() {
 }
 
 mkdir -p ~/.kube
-mkdir -p ~/.config
+mkdir -p ~/.config/eget
 mkdir -p ~/.local/bin
 mkdir -p ~/Projects/kind
 
@@ -158,12 +158,18 @@ download_file "$URL" "$OUTPUT"
 
 chmod +x "$HOME/.local/bin/minikube"
 
-cp ./eget.toml ~/.config
+cp ./eget.toml ~/.config/eget
 ./eget.sh
 
-source ~/.profile
+cat <<'EOF' >>"$HOME/.bashrc"
 
-echo "export PATH=$HOME/.local/bin:$PATH" >> ~/.bashrc
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+EOF
+
+source ~/.bashrc
 
 eget -D
 
