@@ -148,15 +148,15 @@ mkdir -p ~/Projects/kind
 
 URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 OUTPUT="$HOME/.local/bin/kubectl"
-download_file $URL $OUTPUT
+download_file "$URL" "$OUTPUT"
 
-chmod +x ~/.local/bin/kubectl
+chmod +x "$HOME/.local/bin/kubectl"
 
 URL="https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
 OUTPUT="$HOME/.local/bin/minikube"
-download_file $URL $OUTPUT
+download_file "$URL" "$OUTPUT"
 
-chmod +x ~/.local/bin/minikube
+chmod +x "$HOME/.local/bin/minikube"
 
 cp ./eget.toml ~/.config
 ./eget.sh
