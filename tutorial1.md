@@ -99,7 +99,7 @@ We will now try to access the backend application.
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
-curl --resolve :: http://
+curl --resolve $DOMAIN:$PORT:$IP http://$DOMAIN
 ```
 
 Or
@@ -108,6 +108,6 @@ Or
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
-xh --resolve : http://
+xh --resolve $DOMAIN:$IP http://$DOMAIN
 ```
 
