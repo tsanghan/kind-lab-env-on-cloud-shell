@@ -47,3 +47,5 @@ export DIRENV_VER=v2.37.1
 export UV_VER=0.10.12
 export STARSHIP_VER=v1.24.2
 export EZA_VER=v0.23.4
+export GATEWAY_API_VER=v1.5.1
+export ENVOYGATEWAY_VER=v1.7.1

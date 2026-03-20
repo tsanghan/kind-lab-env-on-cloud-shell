@@ -11,16 +11,16 @@ We will now create a Kind Kubernetes cluster
 ```bash
 source ~/.bashrc
 cd ~/Projects/kind
-kind create cluster --config kind-v1.35.3.yaml
+kind create cluster --config kind-${KUBE_VER}.yaml
 ```
 
-Check that the kubectl version match with the kubernetes api version of *v1.35.3*
+Check that the kubectl version match with the kubernetes api version of *${KUBE_VER}*
 ```bash
 k version
 ```
 We now apply Gateway API definition
 ```bash
-k apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/standard-install.yaml
+k apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/${GATEWAY_API_VER}/standard-install.yaml
 ```
 
 Install *batteries* so our Kubernetes cluster is more interesting to play with.
