@@ -188,8 +188,15 @@ if command -v terraform > /dev/null; then
     complete -o nospace -C /usr/bin/terraform terraform
 fi
 # Starship
-if command -v starship > /dev/null; then
-    eval "$(starship init bash)"
+# if command -v starship > /dev/null; then
+#     eval "$(starship init bash)"
+# fi
+#
+# Aliases
+#
+# bat
+if command -v bat > /dev/null; then
+    alias less=bat
 fi
 EOF
 
@@ -205,6 +212,7 @@ tar -C ./dot-kube -cvf - . | tar -C ~/.kube -xvf -
 
 ln -s ~/.local/bin/kubectl ~/.local/bin/k
 
+export DEBIAN_FRONTEND=noninteractive
 sudo apt install nfs-kernel-server -y
 
 echo "/srv 10.254.254.0/24(rw,async,no_subtree_check,no_root_squash)" | sudo tee /etc/exports
