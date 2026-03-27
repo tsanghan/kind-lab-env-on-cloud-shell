@@ -161,6 +161,23 @@ chmod +x "$HOME/.local/bin/minikube"
 cp ./eget.toml ~/.config/eget
 ./eget.sh
 
+mkdir -p "$HOME/.config" && touch "$HOME/.config/starship.toml"
+cat <<'EOF' | tee "$HOME/.config/starship.toml"
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# Disable the package module, hiding it from the prompt completely
+[docker_context]
+disabled = true
+EOF
+
 cat <<'EOF' >>"$HOME/.bashrc"
 
 # set PATH so it includes user's private bin if it exists
@@ -188,9 +205,9 @@ if command -v terraform > /dev/null; then
     complete -o nospace -C /usr/bin/terraform terraform
 fi
 # Starship
-# if command -v starship > /dev/null; then
-#     eval "$(starship init bash)"
-# fi
+if command -v starship > /dev/null; then
+    eval "$(starship init bash)"
+fi
 #
 # Aliases
 #
