@@ -209,7 +209,7 @@ if command -v terraform > /dev/null; then
 fi
 # Starship
 starship_enabled=false
-if command -v starship > /dev/null && [[ "$starship_enabled" -eq "true" ]]; then
+if command -v starship > /dev/null && [[ "$starship_enabled" == "true" ]]; then
     eval "$(starship init bash)"
     source <(starship completions bash)
 fi
