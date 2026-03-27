@@ -161,7 +161,7 @@ chmod +x "$HOME/.local/bin/minikube"
 cp ./eget.toml ~/.config/eget
 ./eget.sh
 
-<<'EOF' >>"$HOME/.bashrc"
+cat <<'EOF' >>"$HOME/.bashrc"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
