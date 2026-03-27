@@ -167,6 +167,30 @@ cat <<'EOF' >>"$HOME/.bashrc"
 if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
+# fzf
+if command -v fzf > /dev/null; then
+    eval "$(fzf --bash)"
+fi
+# direnv
+if command -v direnv > /dev/null; then
+    eval "$(direnv hook bash)"
+fi
+# zoxdie
+if command -v zoxdie > /dev/null; then
+ eval "$(zoxide init zsh --cmd cd)"
+fi
+# OpenTofu
+if command -v tofu > /dev/null; then
+    complete -o nospace -C /usr/bin/tofu tofu
+fi
+# Teraform
+if command -v terraform > /dev/null; then
+    complete -o nospace -C /usr/bin/terraform terraform
+fi
+# Starship
+if command -v starship > /dev/null; then
+    eval "$(starship init bash)"
+fi
 EOF
 
 source ~/.bashrc
