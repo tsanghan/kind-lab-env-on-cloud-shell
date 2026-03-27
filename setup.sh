@@ -176,6 +176,9 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 # Disable the package module, hiding it from the prompt completely
 [docker_context]
 disabled = true
+
+[container]
+disabled = true
 EOF
 
 cat <<'EOF' >>"$HOME/.bashrc"
@@ -205,8 +208,10 @@ if command -v terraform > /dev/null; then
     complete -o nospace -C /usr/bin/terraform terraform
 fi
 # Starship
-if command -v starship > /dev/null; then
+starship_enabled=false
+if command -v starship > /dev/null && [[ "$starship_enabled" -eq "true" ]]; then
     eval "$(starship init bash)"
+    source <(starship completions bash)
 fi
 #
 # Aliases
