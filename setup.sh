@@ -252,3 +252,6 @@ envsubst '$CERT_MANAGER_VER' < ./local-bin/cert-manager.sh > ~/.local/bin/cert-m
 chmod +x ~/.local/bin/cert-manager.sh
 
 "$HOME/.local/bin/docker-network-kind.sh"
+
+pip install pipx
+pipx install rundoc

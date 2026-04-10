@@ -3,7 +3,7 @@
 Please check that you are in the directory *~/cloudshell_open/kind-lab-env-on-cloud-shell*
 
 We have to setup Clound Shell with utilities and tools we need to create Kind Kubernetes cluster.
-```bash#cloud
+```bash#manual
 ./setup.sh
 ```
 
