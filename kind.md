@@ -43,5 +43,5 @@ Click on the *+* sign to start a 2nd *cloudshell* in a new tab.\
 We can now move on to tutorial 1 with the follown command.
 ```bash#cloud
 source ~/.bashrc
-teachme ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
+cloudshell launch-tutorial ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
 ```
