@@ -2,7 +2,7 @@
 
 The following commands deploy EnvoyGateway, a Gateway Controller with EnvoyGateway CRDs
 
-```bash
+```bash#cloud#vm
 helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.1  --set crds.gatewayAPI.enabled=false --set crds.envoyGateway.enabled=true | k apply -f -
 helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.1 -n envoy-gateway-system --create-namespace --skip-crds
 ```
@@ -15,7 +15,7 @@ But let's first explore the manifest file.
 
 Make sure you are on the *cloudshell* tab that has *command prompt*, i.e., not the *cloudshell* tab that *k9s* is running.
 
-```bash
+```bash#cloud
 curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.1/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
 ```
 If you do not have the Editor opened, click the *Open Editor* icon, first icon on the left on the top right corner.
@@ -34,7 +34,7 @@ We will now apply this *quickstart.yaml* manifest into *default* namespace.
 
 Please make sure your *command prompt* *cloudshell* tab has focus.
 
-```bash
+```bash#cloud#vm
 k apply -f https://github.com/envoyproxy/gateway/releases/download/v1.7.1/quickstart.yaml -n default
 ```
 You may want to ckick on the *k9s* tab to see what is being deployed.
@@ -43,7 +43,7 @@ Check the status of *Gateway* resource
 
 Make sure you are back on the *command prompt* tab.
 
-```bash
+```bash#cloud#vm
 k get gateway -A
 ```
 
@@ -61,7 +61,7 @@ This *eg* *Gateway* resource has been assigned an IP address of *10.254.254.248*
 Please see [PROGRAMMED](https://gateway-api.sigs.k8s.io/geps/gep-1364/?h=programmed#programmed)
 
 To get the *port* number the *eg* *Gateway* is listeninig on.
-```bash
+```bash#cloud#vm
 k get gateway eg -oyaml | yq '.spec.listeners'
 ```
 
@@ -78,7 +78,7 @@ You will get a similar output shown below
 There is only 1 item under *.spec.listerners*, and the port number is *80*
 
 Let us now check *Httproute* resource
-```bash
+```bash#cloud#vm
 k get httproutes -A
 ```
 
@@ -95,7 +95,7 @@ We have a *Httproute* resource with *backend* as the name of the resource.
 The *backend* *Httproute* resource has been configured with a *HOSTNAME* of *www.example.com*
 
 We will now try to access the backend application.
-```bash
+```bash#cloud#vm
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
@@ -105,7 +105,7 @@ curl --resolve $DOMAIN:$PORT:$IP http://$DOMAIN
 Or
 
 ```bash
-DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
+DOMAIN=$(k #cloud#vmget httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
 xh --resolve $DOMAIN:$IP http://$DOMAIN
