@@ -105,7 +105,7 @@ curl --resolve $DOMAIN:$PORT:$IP http://$DOMAIN
 Or
 
 ```bash#cloud#vm
-DOMAIN=$(k httproute backend -oyaml | yq '.spec.hostnames[]')
+DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
 xh --resolve $DOMAIN:$IP http://$DOMAIN
