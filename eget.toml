@@ -90,3 +90,6 @@
 ["kubernetes-sigs/gwctl"]
   asset_filters = ["Linux"]
   target = "~/.local/bin"
+
+["casey/just"]
+  target = "~/.local/bin"

@@ -254,4 +254,4 @@ chmod +x ~/.local/bin/cert-manager.sh
 "$HOME/.local/bin/docker-network-kind.sh"
 
 pip install pipx
-pipx install rundoc
+"$HOME/.local/bin/pipx" install rundoc
