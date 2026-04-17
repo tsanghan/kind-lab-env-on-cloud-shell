@@ -7,8 +7,8 @@
 ###
 ### Prompt
 ###
-### write me a bash script segment to check if a curl download of file on a URL fail, 
-### then proceed to download again, with a retry of 5 times. If after 5 retries and is unsuccessful. 
+### write me a bash script segment to check if a curl download of file on a URL fail,
+### then proceed to download again, with a retry of 5 times. If after 5 retries and is unsuccessful.
 ### report that file download failed and exit the script.
 ###
 ### Response
@@ -16,22 +16,22 @@
 ### <> bash
 ###
 ### #!/usr/bin/env bash
-### 
+###
 ### URL="https://example.com/path/to/file"
 ### OUTPUT="file.bin"
 ### MAX_RETRIES=5
 ### attempt=0
-### 
+###
 ### while (( attempt < MAX_RETRIES )); do
 ###     ((attempt++))
 ###     echo "Attempt $attempt of $MAX_RETRIES..."
-### 
+###
 ###     # -f: fail silently on HTTP errors
 ###     # -L: follow redirects
 ###     # -o: write output to file
 ###     curl -fL "$URL" -o "$OUTPUT"
 ###     status=$?
-### 
+###
 ###     if [[ $status -eq 0 ]]; then
 ###         echo "Download succeeded."
 ###         break
@@ -41,12 +41,12 @@
 ###         sleep 2
 ###     fi
 ### done
-### 
+###
 ### if [[ $status -ne 0 ]]; then
 ###     echo "Error: file download failed after $MAX_RETRIES attempts."
 ###     exit 1
 ### fi
-### 
+###
 ### # continue with the rest of the script...
 ###
 ### Prompt
@@ -58,21 +58,21 @@
 ### <> bash
 ###
 ### #!/usr/bin/env bash
-### 
+###
 ### download_file() {
 ###     local url="$1"
 ###     local output="$2"
 ###     local max_retries="${3:-5}"
 ###     local attempt=0
 ###     local status=0
-### 
+###
 ###     while (( attempt < max_retries )); do
 ###         ((attempt++))
 ###         echo "Attempt $attempt of $max_retries..."
-### 
+###
 ###         curl -fL "$url" -o "$output"
 ###         status=$?
-### 
+###
 ###         if (( status == 0 )); then
 ###             echo "Download succeeded."
 ###             return 0
@@ -81,11 +81,11 @@
 ###             sleep 2   # optional pause before next try
 ###         fi
 ###     done
-### 
+###
 ###     echo "Error: file download failed after $max_retries attempts."
 ###     return 1
 ### }
-### 
+###
 ### # Example usage:
 ### # download_file "https://example.com/path/to/file" "file.bin" 5
 ### # if [[ $? -ne 0 ]]; then
@@ -235,7 +235,7 @@ tar -C ./dot-kube -cvf - . | tar -C ~/.kube -xvf -
 ln -s ~/.local/bin/kubectl ~/.local/bin/k
 
 export DEBIAN_FRONTEND=noninteractive
-sudo apt install nfs-kernel-server -y
+sudo apt install byobu nfs-kernel-server -y
 
 echo "/srv 10.254.254.0/24(rw,async,no_subtree_check,no_root_squash)" | sudo tee /etc/exports
 
