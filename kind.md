@@ -3,7 +3,7 @@
 Please check that you are in the directory *~/cloudshell_open/kind-lab-env-on-cloud-shell*
 
 We have to setup Clound Shell with utilities and tools we need to create Kind Kubernetes cluster.
-```bash#cloud
+```bash
 ./setup.sh
 ```
 
@@ -41,7 +41,7 @@ Click *view* and click *Toggle Hidden Files*.\
 All *shell scripts* are in *~/.local/bin* directory, in the *EXPLORER* panel.\
 Click on the *+* sign to start a 2nd *cloudshell* in a new tab.\
 We can now move on to tutorial 1 with the follown command.
-```bash#cloud
+```bash
 source ~/.bashrc
-teachme ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
+cloudshell launch-tutorial ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
 ```
