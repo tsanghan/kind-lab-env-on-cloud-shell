@@ -44,7 +44,7 @@ Check the status of *Gateway* resource
 Make sure you are back on the *command prompt* tab.
 
 ```bash
-k get gateway -A
+gwctl get gateway -A
 ```
 
 You will see some output similar to what is shown below.
@@ -62,7 +62,7 @@ Please see [PROGRAMMED](https://gateway-api.sigs.k8s.io/geps/gep-1364/?h=program
 
 To get the *port* number the *eg* *Gateway* is listeninig on.
 ```bash
-k get gateway eg -oyaml | yq '.spec.listeners'
+gwctl get gateway eg -oyaml | yq '.spec.listeners'
 ```
 
 You will get a similar output shown below
@@ -79,7 +79,7 @@ There is only 1 item under *.spec.listerners*, and the port number is *80*
 
 Let us now check *Httproute* resource
 ```bash
-k get httproutes -A
+gwctl get httproutes -A
 ```
 
 You will see some output similar to what is show below.
