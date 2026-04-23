@@ -7,7 +7,7 @@ Click the link below to start your Google Cloudshell enviroment, you don't need 
 The environment consist of
 | Software     | Version |
 |:-------------|:--------|
-| Kubernetes   | v1.35.4 |
+| Kubernetes   | v1.36.0 |
 | Gateway API  | v1.5.1  |
 | EnvoyGateway | v1.7.2  |
 | Cert-Manager | v1.20.2 |

@@ -7,19 +7,19 @@ We have to setup Clound Shell with utilities and tools we need to create Kind Ku
 ./setup.sh
 ```
 
-We will now create a Kind Kubernetes cluster
-```bash#cloud#vm
+We will now create a Kind Kubernetes cluster 
+```bash
 source ~/.bashrc
 cd ~/Projects/kind
-kind create cluster --config kind-v1.35.4.yaml
+kind create cluster --config kind-v1.36.0.yaml
 ```
 
-Check that the kubectl version match with the kubernetes api version of *v1.35.4*
-```bash#cloud#vm
+Check that the kubectl version match with the kubernetes api version of *v1.36.0*
+```bash
 k version
 ```
 We now apply Gateway API definition
-```bash#cloud#vm
+```bash
 k apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/standard-install.yaml
 ```
 
@@ -30,7 +30,7 @@ The following command will install,
 3. *Metrics Server* a lightweight tool that collects and provides real-time CPU and memory usage metrics from containers and nodes in a Kubernetes cluster
 4. *NFS CSI Driver* a Dynamic Volume Provisioner using NFS as storage service
 5. *Cert-manager* a powerful and extensible X.509 certificate controller for Kubernetes workloads
-```bash#cloud#vm
+```bash
 (cilium install --wait && metallb.sh && metrics-server.sh && nfs-storage-class.sh && cert-manager.sh) >/dev/null 2>&1 & k9s -A
 ```
 Wait for the *STATUS* of all Pods to be *Running* before procedding.\
@@ -43,5 +43,5 @@ Click on the *+* sign to start a 2nd *cloudshell* in a new tab.\
 We can now move on to tutorial 1 with the follown command.
 ```bash
 source ~/.bashrc
-cloudshell launch-tutorial ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
+teachme ~/cloudshell_open/kind-lab-env-on-cloud-shell/tutorial1.md
 ```
