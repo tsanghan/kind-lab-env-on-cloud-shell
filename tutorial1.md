@@ -50,8 +50,8 @@ gwctl get gateway -A
 You will see some output similar to what is shown below.
 We only have 1 *Gateway* resource in *Default* namespace.
 ```none
-NAMESPACE   NAME   CLASS   ADDRESS          PROGRAMMED   AGE
-default     eg     eg      10.254.254.248   True         6m12s
+NAMESPACE  NAME  CLASS  ADDRESSES       PORTS  PROGRAMMED  AGE
+default    eg    eg     10.254.254.248  80     True        109s
 ```
 
 We have a *Gateway* resource with *eg* as the name of the resource.
@@ -86,8 +86,8 @@ You will see some output similar to what is show below.
 
 We only have 1 *Httproute* resource in *Default* namespace.
 ```none
-NAMESPACE   NAME      HOSTNAMES             AGE
-default     backend   ["www.example.com"]   14m
+NAMESPACE  NAME     HOSTNAMES        PARENT REFS  ACCEPTED  RESOLVED  AGE
+default    backend  www.example.com  1            True      True      38s
 ```
 
 We have a *Httproute* resource with *backend* as the name of the resource.
