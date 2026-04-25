@@ -2,7 +2,7 @@
 
 The following commands deploy EnvoyGateway, a Gateway Controller with EnvoyGateway CRDs
 
-```bash
+```bash#cloud#vm
 helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version ${ENVOYGATEWAY_VER}  --set crds.gatewayAPI.enabled=false --set crds.envoyGateway.enabled=true | k apply -f -
 helm install eg oci://docker.io/envoyproxy/gateway-helm --version ${ENVOYGATEWAY_VER} -n envoy-gateway-system --create-namespace --skip-crds
 ```
@@ -34,7 +34,7 @@ We will now apply this *quickstart.yaml* manifest into *default* namespace.
 
 Please make sure your *command prompt* *cloudshell* tab has focus.
 
-```bash
+```bash#cloud#vm
 k apply -f https://github.com/envoyproxy/gateway/releases/download/${ENVOYGATEWAY_VER}/quickstart.yaml -n default
 ```
 You may want to ckick on the *k9s* tab to see what is being deployed.
@@ -43,7 +43,7 @@ Check the status of *Gateway* resource
 
 Make sure you are back on the *command prompt* tab.
 
-```bash
+```bash#cloud#vm
 gwctl get gateway -A
 ```
 
@@ -61,7 +61,7 @@ This *eg* *Gateway* resource has been assigned an IP address of *10.254.254.248*
 Please see [PROGRAMMED](https://gateway-api.sigs.k8s.io/geps/gep-1364/?h=programmed#programmed)
 
 To get the *port* number the *eg* *Gateway* is listeninig on.
-```bash
+```bash#cloud#vm
 gwctl get gateway eg -oyaml | yq '.spec.listeners'
 ```
 
@@ -78,7 +78,7 @@ You will get a similar output shown below
 There is only 1 item under *.spec.listerners*, and the port number is *80*
 
 Let us now check *Httproute* resource
-```bash
+```bash#cloud#vm
 gwctl get httproutes -A
 ```
 
@@ -95,7 +95,7 @@ We have a *Httproute* resource with *backend* as the name of the resource.
 The *backend* *Httproute* resource has been configured with a *HOSTNAME* of *www.example.com*
 
 We will now try to access the backend application.
-```bash
+```bash#cloud#vm
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
@@ -104,7 +104,7 @@ curl --resolve $DOMAIN:$PORT:$IP http://$DOMAIN
 
 Or
 
-```bash
+```bash#cloud#vm
 DOMAIN=$(k get httproute backend -oyaml | yq '.spec.hostnames[]')
 PORT=$(k get gateway eg -oyaml | yq '.spec.listeners[].port')
 IP=$(k get gateway eg -oyaml | yq '.status.addresses[].value')
