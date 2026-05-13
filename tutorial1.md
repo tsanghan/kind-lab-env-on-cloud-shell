@@ -3,8 +3,8 @@
 The following commands deploy EnvoyGateway, a Gateway Controller with EnvoyGateway CRDs
 
 ```bash#cloud#vm
-helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.2  --set crds.gatewayAPI.enabled=false --set crds.envoyGateway.enabled=true | k apply -f -
-helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.2 -n envoy-gateway-system --create-namespace --skip-crds
+helm template eg oci://docker.io/envoyproxy/gateway-crds-helm --version v1.7.3  --set crds.gatewayAPI.enabled=false --set crds.envoyGateway.enabled=true | k apply -f -
+helm install eg oci://docker.io/envoyproxy/gateway-helm --version v1.7.3 -n envoy-gateway-system --create-namespace --skip-crds
 ```
 
 While waiting for *helm* to complete EonvoyGateway deployment, you can click on the *cloudshell* tab where *k9s* is running to observer what Pod/Pods is/are deployed.
@@ -16,7 +16,7 @@ But let's first explore the manifest file.
 Make sure you are on the *cloudshell* tab that has *command prompt*, i.e., not the *cloudshell* tab that *k9s* is running.
 
 ```bash
-curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.2/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
+curl -sSL https://github.com/envoyproxy/gateway/releases/download/v1.7.3/quickstart.yaml -o ~/Projects/kind/quickstart.yaml
 ```
 If you do not have the Editor opened, click the *Open Editor* icon, first icon on the left on the top right corner.
 
@@ -35,7 +35,7 @@ We will now apply this *quickstart.yaml* manifest into *default* namespace.
 Please make sure your *command prompt* *cloudshell* tab has focus.
 
 ```bash#cloud#vm
-k apply -f https://github.com/envoyproxy/gateway/releases/download/v1.7.2/quickstart.yaml -n default
+k apply -f https://github.com/envoyproxy/gateway/releases/download/v1.7.3/quickstart.yaml -n default
 ```
 You may want to ckick on the *k9s* tab to see what is being deployed.
 
