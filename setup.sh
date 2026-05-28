@@ -146,17 +146,43 @@ mkdir -p ~/.config/eget
 mkdir -p ~/.local/bin
 mkdir -p ~/Projects/kind
 
-URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-OUTPUT="$HOME/.local/bin/kubectl"
-download_file "$URL" "$OUTPUT"
+# URL="https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# OUTPUT="$HOME/.local/bin/kubectl"
+# download_file "$URL" "$OUTPUT"
 
-chmod +x "$HOME/.local/bin/kubectl"
+# chmod +x "$HOME/.local/bin/kubectl"
 
-URL="https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
-OUTPUT="$HOME/.local/bin/minikube"
-download_file "$URL" "$OUTPUT"
+# URL="https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
+# OUTPUT="$HOME/.local/bin/minikube"
+# download_file "$URL" "$OUTPUT"
 
-chmod +x "$HOME/.local/bin/minikube"
+# chmod +x "$HOME/.local/bin/minikube"
+
+### ollama qwen2.5-coder:7b
+### prompt: can you improve on the `minikube` & `kubectl` download by converting to a function call and
+### passing `minikube` & `kubectl` data via a associate array into the function?
+###
+# Associative array to hold the download data for kubectl and minikube
+declare -A downloads=(
+    ["kubectl"]='https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl'
+    ["minikube"]='https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64'
+)
+
+# Download kubectl and minikube
+for tool in "${!downloads[@]}"; do
+    url="${downloads[$tool]}"
+    output="$HOME/.local/bin/$tool"
+
+    echo "Downloading $tool from $url to $output..."
+    download_file "$url" "$output" 5
+
+    if [[ $? -eq 0 ]]; then
+        chmod +x "$output"
+    else
+        echo "Failed to download $tool. Exiting."
+        exit 1
+    fi
+done
 
 cp ./eget.toml ~/.config/eget
 ./eget.sh
