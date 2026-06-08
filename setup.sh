@@ -163,8 +163,9 @@ mkdir -p ~/Projects/kind
 ### passing `minikube` & `kubectl` data via a associate array into the function?
 ###
 # Associative array to hold the download data for kubectl and minikube
+kubectl_ver=$(curl -L -s https://dl.k8s.io/release/stable.txt)
 declare -A downloads=(
-    ["kubectl"]='https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl)'
+    ["kubectl"]="https://dl.k8s.io/release/${kubectl_ver}/bin/linux/amd64/kubectl"
     ["minikube"]='https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64'
 )
 
