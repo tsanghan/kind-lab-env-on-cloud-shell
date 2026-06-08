@@ -7,9 +7,10 @@ Click the link below to start your Google Cloudshell enviroment, you don't need 
 The environment consist of
 | Software     | Version |
 |:-------------|:--------|
+| Kind         | v0.32.0 |
 | Kubernetes   | v1.36.1 |
 | Gateway API  | v1.5.1  |
-| EnvoyGateway | v1.7.3  |
+| EnvoyGateway | v1.8.1  |
 | Cert-Manager | v1.20.2 |
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_image=gcr.io/cloudshell-images/cloudshell&cloudshell_git_repo=https://github.com/tsanghan/kind-lab-env-on-cloud-shell.git&cloudshell_tutorial=kind.md&shellonly=true)
