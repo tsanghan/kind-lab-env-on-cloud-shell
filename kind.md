@@ -11,10 +11,10 @@ We will now create a Kind Kubernetes cluster
 ```bash#cloud#vm
 source ~/.bashrc
 cd ~/Projects/kind
-kind create cluster --config kind-v1.36.1.yaml
+kind create cluster --config kind-v1.36.2.yaml
 ```
 
-Check that the kubectl version match with the kubernetes api version of *v1.36.1*
+Check that the kubectl version match with the kubernetes api version of *v1.36.2*
 ```bash#cloud#vm
 k version
 ```

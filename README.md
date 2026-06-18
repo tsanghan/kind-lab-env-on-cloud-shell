@@ -8,7 +8,7 @@ The environment consist of
 | Software     | Version |
 |:-------------|:--------|
 | Kind         | v0.32.0 |
-| Kubernetes   | v1.36.1 |
+| Kubernetes   | v1.36.2 |
 | Gateway API  | v1.5.1  |
 | EnvoyGateway | v1.8.1  |
 | Cert-Manager | v1.20.2 |
