@@ -86,8 +86,8 @@ You will see some output similar to what is show below.
 
 We only have 1 *Httproute* resource in *Default* namespace.
 ```none
-NAMESPACE   NAME      HOSTNAMES             AGE
-default     backend   ["www.example.com"]   14m
+NAMESPACE  NAME     HOSTNAMES        PARENT REFS  ACCEPTED  RESOLVED  AGE
+default    backend  www.example.com  1            True      True      43s
 ```
 
 We have a *Httproute* resource with *backend* as the name of the resource.
